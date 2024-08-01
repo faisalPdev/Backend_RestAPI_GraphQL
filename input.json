@@ -1,0 +1,15 @@
+# create the book
+{
+    "title":"Sample Book",
+    "author":1,
+    "category":2
+}
+
+# Updating the book
+{
+    "title":"Updated Sample Book",
+    "author":1,
+    "category":2
+    
+}
+

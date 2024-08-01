@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from .models import *
 from .serializer import *
@@ -101,13 +102,49 @@ class BookListCreateAPIView(generics.ListCreateAPIView):
         if book:
             return Response({'error':'Book already exists'}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            book=Book(title=title, author=author, category=category)
-            book.save()
+            book=Book.objects.create(title=title, author=author, category=category)
             return Response(BookSerializer(book).data, status=status.HTTP_201_CREATED)
 
 class BookDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset=Book.objects.all()
     serializer_class=BookSerializer 
+
+    def update(self, request, *args, **kwargs):
+        
+        title=request.data.get('title')
+        author_id=request.data.get('author')
+        category_id=request.data.get('category')    
+        
+        try:
+         author=Author.objects.get(id=author_id) 
+        except Author.DoesNotExist:
+            return Response({'error':'Author not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        try:
+         category=Category.objects.get(id=category_id)
+        except Category.DoesNotExist:
+            return Response({'error':'Category not found'}, status=status.HTTP_404_NOT_FOUND)   
+
+        
+        try:
+            book = self.get_object()
+        except Http404:
+            return Response({'error': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        
+        book.title = title
+        book.author = author
+        book.category = category
+        book.save()
+
+        return Response(BookSerializer(book).data, status=status.HTTP_200_OK)
+        
+        
+            
+
+    
+
+        
     
         
     

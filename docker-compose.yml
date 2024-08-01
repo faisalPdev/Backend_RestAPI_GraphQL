@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
@@ -10,4 +11,5 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=core.settings
+    container_name: Backend_RestAPI_GraphQL
 

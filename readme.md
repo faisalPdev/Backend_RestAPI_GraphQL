@@ -19,3 +19,9 @@ Features
 - Category wise Books
 - Author wise Books
 - Containerised using Docker
+
+Run
+- clone the repo
+- docker compose up --build
+- http://localhost:8000/api/swagger/               #for  restapi
+- http://localhost:8000/graphql                    #for  graphql

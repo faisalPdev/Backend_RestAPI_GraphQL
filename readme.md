@@ -1,27 +1,59 @@
-Backend Using RestAPI and GraphQL
+# Backend Using RestAPI and GraphQL
 
-Packages used
+
+
+
+
+
+
+
+## Packages Used
+
 - Django
 - Django Rest Framework
 - Graphene-django
 - drf-yasg for restapi documentation
 
-DataBase
+
+## Database
+
 - sqlite3
+## Features
 
-Models
-- Author
-- Category
-- Book
-
-Features
 - CRUD operations for Author, Category, and Book
 - Category wise Books
 - Author wise Books
 - Containerised using Docker
 
-Run
-- clone the repo
-- docker compose up --build
-- http://localhost:8000/api/swagger/               #for  restapi
-- http://localhost:8000/graphql                    #for  graphql
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/faisalPdev/Backend_RestAPI_GraphQL.git
+```
+
+Go to the project directory
+
+```bash
+  cd Backend_RestAPI_GraphQL
+```
+
+Docker compose up and build
+
+```bash
+  docker compose up --build
+```
+
+To test restapi
+
+```bash
+  http://localhost:8000/api/swagger/
+```
+To test GraphQl
+
+```bash
+  http://localhost:8000/graphql 
+```
+

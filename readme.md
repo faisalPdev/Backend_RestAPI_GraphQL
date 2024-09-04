@@ -51,7 +51,7 @@ To test restapi
 ```bash
   http://localhost:8000/api/swagger/
 ```
-To test GraphQl
+To test GraphQl (GraphiQL)
 
 ```bash
   http://localhost:8000/graphql 
